@@ -8,6 +8,10 @@ import {
   REGISTER_USER_ERROR,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  LOGOUT_USER,
+  DISPLAY_ALERT,
+  SELL_ITEM_SUCCESS,
+  SELL_ITEM_ERROR,
 } from "./action";
 
 const user = localStorage.getItem("user");
@@ -16,12 +20,19 @@ const initialState = {
   isLoading: false,
   showSidebar: false,
   user: user ? JSON.parse(user) : null,
+  showAlert: false,
+  alertText: "",
+  alertType: "",
 };
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const displayAlert = () => {
+    dispatch({ type: DISPLAY_ALERT });
+  };
 
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR });
@@ -70,9 +81,37 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER });
+    removeUserFromLocalStorage();
+  };
+
+  // const sellItem = async (allData) => {
+  //   console.log(allData);
+  //   try {
+  //     const response = await axios.post("/api/v1/item/sell", allData);
+  //     const { things } = response.data;
+  //     console.log(things);
+  //     dispatch({ type: SELL_ITEM_SUCCESS, payload: { things } });
+  //   } catch (error) {
+  //     dispatch({
+  //       type: SELL_ITEM_ERROR,
+  //       payload: { msg: error.response.data.msg },
+  //     });
+  //   }
+  // };
+
   return (
     <AppContext.Provider
-      value={{ ...state, toggleSidebar, registerUser, loginUser }}
+      value={{
+        ...state,
+        toggleSidebar,
+        registerUser,
+        loginUser,
+        logoutUser,
+        displayAlert,
+        // sellItem,
+      }}
     >
       {children}
     </AppContext.Provider>

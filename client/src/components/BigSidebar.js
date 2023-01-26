@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "../assets/wrappers/BigSidebar";
 import { useAppContext } from "../context/appContext";
 import Navlinks from "./Navlinks";
+import logo from "../assets/logo2.svg";
 const BigSidebar = () => {
   const { showSidebar } = useAppContext();
   return (
@@ -13,7 +14,9 @@ const BigSidebar = () => {
       >
         <div className="content">
           <header>
-            <h3>logo</h3>
+            <h3 style={{ marginTop: "2rem", marginLeft: "-1rem" }}>
+              Campus Cart
+            </h3>
           </header>
           <Navlinks />
         </div>

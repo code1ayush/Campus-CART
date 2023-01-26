@@ -7,6 +7,7 @@ import { CiTwitter } from "react-icons/ci";
 import { useAppContext } from "../context/appContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -19,7 +20,7 @@ const Register = () => {
   const [rightPanel, setRightPanel] = useState(false);
   const [values, setValues] = useState(initialState);
 
-  const { user, registerUser, loginUser } = useAppContext();
+  const { user, registerUser, loginUser, displayAlert } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -144,7 +145,7 @@ const Register = () => {
             <div className="overlay">
               <div className="overlay-panel overlay-left">
                 <h1>Already have Account!</h1>
-                <p>SignIn here</p>
+                <p>Sign In here</p>
                 <button
                   className="ghost"
                   id="signIn"
@@ -153,7 +154,7 @@ const Register = () => {
                   Sign In
                 </button>
 
-                <a href="/landing">
+                <Link to="/landing">
                   <button
                     className="ghost"
                     style={{ marginTop: "20px" }}
@@ -161,7 +162,7 @@ const Register = () => {
                   >
                     Back to Home
                   </button>
-                </a>
+                </Link>
               </div>
               <div className="overlay-panel overlay-right">
                 <h1>Don't Have Account</h1>
@@ -173,7 +174,7 @@ const Register = () => {
                 >
                   Register
                 </button>
-                <a href="/landing">
+                <Link to="/landing">
                   <button
                     className="ghost"
                     style={{ marginTop: "20px" }}
@@ -181,7 +182,7 @@ const Register = () => {
                   >
                     Back to Home
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

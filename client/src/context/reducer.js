@@ -4,6 +4,10 @@ import {
   REGISTER_USER_ERROR,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  LOGOUT_USER,
+  DISPLAY_ALERT,
+  SELL_ITEM_SUCCESS,
+  SELL_ITEM_ERROR,
 } from "./action";
 
 import { initialState } from "./appContext";
@@ -30,6 +34,33 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === LOGIN_USER_ERROR) {
+    return {
+      ...state,
+    };
+  }
+
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...initialState,
+      user: null,
+    };
+  }
+
+  if (action.type === DISPLAY_ALERT) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "danger",
+      alertText: "please provide all values",
+    };
+  }
+  if (action.type === SELL_ITEM_SUCCESS) {
+    return {
+      ...state,
+      things: action.payload.things,
+    };
+  }
+  if (action.type === SELL_ITEM_ERROR) {
     return {
       ...state,
     };

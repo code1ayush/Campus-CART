@@ -187,7 +187,7 @@ const Wrapper = styled.main`
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
+    padding: 12px 26px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -204,6 +204,7 @@ const Wrapper = styled.main`
   button.ghost {
     background-color: transparent;
     border-color: #ffffff;
+    width: 10rem;
   }
 
   button:hover {

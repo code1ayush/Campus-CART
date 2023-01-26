@@ -3,8 +3,9 @@ import Wrapper from "../assets/wrappers/Navbar";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useState } from "react";
 import { useAppContext } from "../context/appContext";
+import { Navigate } from "react";
 const Navbar = () => {
-  const { toggleSidebar, user } = useAppContext();
+  const { toggleSidebar, user, logoutUser } = useAppContext();
   const [showLogout, setShowLogout] = useState(false);
   const logToggle = () => {
     setShowLogout(!showLogout);
@@ -16,7 +17,6 @@ const Navbar = () => {
           <FaAlignLeft />
         </button>
         <div>
-          logo
           <h3 className="logo-text">Dashboard</h3>
         </div>
         <div className="btn-container">
@@ -26,7 +26,9 @@ const Navbar = () => {
             <FaCaretDown />
           </button>
           <div className={showLogout ? `dropdown show-dropdown` : `dropdown`}>
-            <button className="dropdown-btn">Logout</button>
+            <button className="dropdown-btn" onClick={logoutUser}>
+              Logout
+            </button>
           </div>
         </div>
       </div>
