@@ -20,7 +20,8 @@ const ThingSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true,
+    enum: ["Electronics", "Books", "Utensils", "Cycles", "Others"],
+    default: "Books",
   },
   contact: {
     type: String,

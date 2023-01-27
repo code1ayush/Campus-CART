@@ -83,9 +83,12 @@
 // export default Sell;
 
 import React from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import Dropzone from "react-dropzone";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import * as yup from "yup";
 import "../../sell.css";
@@ -222,7 +225,7 @@ const Sell = () => {
                 helperText={touched.desc && errors.desc}
                 sx={{ gridColumn: "span 1", margin: "0 1rem" }}
               />
-              <TextField
+              {/* <TextField
                 label="Category"
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -231,7 +234,30 @@ const Sell = () => {
                 error={Boolean(touched.category) && Boolean(errors.category)}
                 helperText={touched.category && errors.category}
                 sx={{ gridColumn: "span 1", margin: "0 1rem" }}
-              />
+              /> */}
+              <FormControl>
+                <InputLabel id="demo-simple-select-label" sx={{ ml: 2 }}>
+                  Category
+                </InputLabel>
+                <Select
+                  label="Category"
+                  labelId="demo-simple-select-label"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.category}
+                  name="category"
+                  error={Boolean(touched.category) && Boolean(errors.category)}
+                  helperText={touched.category && errors.category}
+                  sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+                >
+                  {/* <InputLabel id="demo-simple-select-label">Age1</InputLabel> */}
+                  <MenuItem value="Electronics">Electronics</MenuItem>
+                  <MenuItem value="Books">Books</MenuItem>
+                  <MenuItem value="Utensils">Utensils</MenuItem>
+                  <MenuItem value="Cycles">Cycles</MenuItem>
+                  <MenuItem value="Others">Others</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 label="contact"
                 onBlur={handleBlur}
