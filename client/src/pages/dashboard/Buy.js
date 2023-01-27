@@ -103,11 +103,18 @@ const Buy = () => {
                           </h4>
                           {/* <p>{modalData.category}</p> */}
                           <h4>
+                            Category:{" "}
+                            <span className="item-contact">
+                              {modalData.category}
+                            </span>
+                          </h4>
+                          <h4>
                             Contact:{" "}
                             <span className="item-contact">
                               {modalData.contact}
                             </span>
                           </h4>
+
                           <h4>
                             Chat With Seller :{"  "}
                             <span>
