@@ -3,18 +3,23 @@ import { useAppContext } from "../../context/appContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../buy.css";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import {
+  AiOutlineCloseCircle,
+  AiFillHeart,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { BsWhatsapp, BsCartPlus } from "react-icons/bs";
 import preloader from "../../assets/preloader.gif";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import zIndex from "@mui/material/styles/zIndex";
 
 const Buy = () => {
   const [showModel, setShowModel] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [showChat, setShowChat] = useState(false);
 
-  const { buyItem, item, handleCart } = useAppContext();
+  const { buyItem, item, handleCart, handleWish } = useAppContext();
 
   // const finalItem = Object.values(item);
   // console.log(item);
@@ -42,35 +47,37 @@ const Buy = () => {
 
   return (
     <>
-      {/* <button onClick={buyItem}>Click</button> */}
-      <Stack
-        spacing={2}
-        direction="row"
-        sx={{ display: "flex", justifyContent: "center" }}
-      >
-        {/* <Button variant="contained" onClick={()=>setCategories('')}>All</Button> */}
-        <Button variant="contained" onClick={() => setCategories("All")}>
-          All
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setCategories("Electronics")}
+      <div>
+        {/* <button onClick={buyItem}>Click</button> */}
+        <Stack
+          spacing={2}
+          direction="row"
+          sx={{ display: "flex", justifyContent: "center" }}
         >
-          Electronics
-        </Button>
-        <Button variant="contained" onClick={() => setCategories("Books")}>
-          Books
-        </Button>
-        <Button variant="contained" onClick={() => setCategories("Utensils")}>
-          Utensils
-        </Button>
-        <Button variant="contained" onClick={() => setCategories("Cycles")}>
-          Cycles
-        </Button>
-        <Button variant="contained" onClick={() => setCategories("Others")}>
-          Others
-        </Button>
-      </Stack>
+          {/* <Button variant="contained" onClick={()=>setCategories('')}>All</Button> */}
+          <Button variant="contained" onClick={() => setCategories("All")}>
+            All
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setCategories("Electronics")}
+          >
+            Electronics
+          </Button>
+          <Button variant="contained" onClick={() => setCategories("Books")}>
+            Books
+          </Button>
+          <Button variant="contained" onClick={() => setCategories("Utensils")}>
+            Utensils
+          </Button>
+          <Button variant="contained" onClick={() => setCategories("Cycles")}>
+            Cycles
+          </Button>
+          <Button variant="contained" onClick={() => setCategories("Others")}>
+            Others
+          </Button>
+        </Stack>
+      </div>
 
       {item ? (
         <div className="main-container">
@@ -93,7 +100,7 @@ const Buy = () => {
                     <div className="desc-div">
                       <p className="item-name">{items.name}</p>
                       <button className="cart-btn">
-                        <BsCartPlus />
+                        <AiOutlineShoppingCart />
                       </button>
                     </div>
                     <p className="item-price">{items.price}</p>
@@ -162,17 +169,24 @@ const Buy = () => {
                                 </a>
                               </span>
                             </h4>
-                            <button
-                              className="add-cart"
-                              onClick={() => handleCart(modalData)}
-                            >
-                              Add To Cart <BsCartPlus />
-                            </button>
-
-                            <div>
-                              <button onClick={toggleChat} className="add-cart">
-                                socketIo
-                              </button>
+                            <div className="btn-container">
+                              <div>
+                                <button
+                                  className="add-cart"
+                                  onClick={() => handleCart(modalData)}
+                                >
+                                  Add To Cart <AiOutlineShoppingCart />
+                                </button>
+                              </div>
+                              <div className="btner">
+                                <button
+                                  className="add-wish"
+                                  onClick={() => handleWish(modalData)}
+                                >
+                                  WishList
+                                  <AiFillHeart className="heart" />
+                                </button>
+                              </div>
                             </div>
 
                             <div
@@ -217,7 +231,7 @@ const Buy = () => {
                       <div className="desc-div">
                         <p className="item-name">{items.name}</p>
                         <button className="cart-btn">
-                          <BsCartPlus />
+                          <AiOutlineShoppingCart />
                         </button>
                       </div>
                       <p className="item-price">{items.price}</p>
@@ -293,17 +307,14 @@ const Buy = () => {
                                 className="add-cart"
                                 onClick={() => handleCart(modalData)}
                               >
-                                Add To Cart <BsCartPlus />
+                                Add To Cart <AiOutlineShoppingCart />
                               </button>
-
-                              <div>
-                                <button
-                                  onClick={toggleChat}
-                                  className="add-cart"
-                                >
-                                  socketIo
-                                </button>
-                              </div>
+                              <button
+                                className="add-wish"
+                                onClick={() => handleWish(modalData)}
+                              >
+                                <AiFillHeart />
+                              </button>
 
                               <div
                                 className={

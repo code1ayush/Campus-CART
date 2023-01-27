@@ -31,6 +31,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [item, setItem] = useState("");
   const [cart, setCart] = useState([]);
+  const [wish, setWish] = useState([]);
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -120,6 +121,10 @@ const AppProvider = ({ children }) => {
   // const delCart = () => {
   //   console.log("hello");
   // };
+
+  const handleWish = (hello) => {
+    setWish(wish.concat(hello));
+  };
   return (
     <AppContext.Provider
       value={{
@@ -135,6 +140,9 @@ const AppProvider = ({ children }) => {
         handleCart,
         cart,
         setCart,
+        handleWish,
+        wish,
+        setWish,
         // delCart,
       }}
     >

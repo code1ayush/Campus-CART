@@ -34,7 +34,7 @@
 }
 
 .item-price{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
     color: green;
     margin-top: -2rem ;
@@ -216,4 +216,44 @@ display: block;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.add-wish{
+    background-color: #5c62cd;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;;
+    color: white;
+    margin-bottom: .5rem;
+    padding: .4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.btner{
+    margin-left: 2rem;
+}
+
+.add-cart:focus{
+    color: red;
+    background-color: white;
+}
+
+.add-wish:focus{
+    color: red;
+    background-color: white;
+}
+
+.heart{
+    margin-bottom: -.2rem;
+}
+
+.chat-btn2{
+    margin-bottom: -.4rem;
+    margin-left: .5rem;
 }
