@@ -164,3 +164,15 @@
     cursor: pointer;
     background-color: white;
 }
+
+.add-cart{
+    background-color: #5c62cd;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;;
+    color: white;
+    margin-bottom: .5rem;
+    padding: .4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

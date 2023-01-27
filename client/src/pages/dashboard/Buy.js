@@ -124,6 +124,9 @@ const Buy = () => {
                               </a>
                             </span>
                           </h4>
+                          <button className="add-cart">
+                            Add To Cart <BsCartPlus />
+                          </button>
                         </div>
                       </div>
                     ) : (
