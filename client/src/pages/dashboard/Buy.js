@@ -8,22 +8,14 @@ import { BsWhatsapp, BsCartPlus } from "react-icons/bs";
 import preloader from "../../assets/preloader.gif";
 
 const Buy = () => {
-  const [item, setItem] = useState("");
   const [showModel, setShowModel] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [showChat, setShowChat] = useState(false);
 
-  const buyItem = async () => {
-    try {
-      const { data } = await axios.get("/api/v1/item");
-      setItem(data);
-      // console.log(item);
-    } catch (error) {
-      console.log("some error");
-    }
-  };
+  const { buyItem, item, handleCart } = useAppContext();
 
   // const finalItem = Object.values(item);
-  console.log(item);
+  // console.log(item);
 
   useEffect(() => {
     buyItem();
@@ -39,6 +31,10 @@ const Buy = () => {
   const handleClick = (items) => {
     setModalData(items);
     showModal();
+  };
+
+  const toggleChat = () => {
+    setShowChat(!showChat);
   };
 
   return (
@@ -131,10 +127,30 @@ const Buy = () => {
                               </a>
                             </span>
                           </h4>
-                          <button className="add-cart">
+                          <button
+                            className="add-cart"
+                            onClick={() => handleCart(modalData)}
+                          >
                             Add To Cart <BsCartPlus />
                           </button>
+
+                          <div>
+                            <button onClick={toggleChat} className="add-cart">
+                              socketIo
+                            </button>
+                          </div>
+
+                          <div
+                            className={
+                              showChat ? "model1 show-model1" : "model1"
+                            }
+                          >
+                            <div className="content11">
+                              <button onClick={toggleChat}>close</button>
+                            </div>
+                          </div>
                         </div>
+                        ;
                       </div>
                     ) : (
                       <div>no data</div>
@@ -146,7 +162,7 @@ const Buy = () => {
           })}
         </div>
       ) : (
-        <div className="preloader"></div>
+        <div className="preloader">No Data</div>
       )}
     </>
   );

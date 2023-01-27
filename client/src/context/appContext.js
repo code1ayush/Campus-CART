@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useState } from "react";
 import reducer from "./reducer.js";
 import axios from "axios";
 import { TOGGLE_SIDEBAR } from "./action.js";
@@ -29,6 +29,8 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [item, setItem] = useState("");
+  const [cart, setCart] = useState([]);
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -101,6 +103,23 @@ const AppProvider = ({ children }) => {
   //   }
   // };
 
+  const buyItem = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/item");
+      setItem(data);
+      // console.log(item);
+    } catch (error) {
+      console.log("some error");
+    }
+  };
+
+  const handleCart = (hello) => {
+    setCart(cart.concat(hello));
+  };
+
+  // const delCart = () => {
+  //   console.log("hello");
+  // };
   return (
     <AppContext.Provider
       value={{
@@ -111,6 +130,12 @@ const AppProvider = ({ children }) => {
         logoutUser,
         displayAlert,
         // sellItem,
+        buyItem,
+        item,
+        handleCart,
+        cart,
+        setCart,
+        // delCart,
       }}
     >
       {children}
