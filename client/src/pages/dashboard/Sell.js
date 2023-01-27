@@ -88,6 +88,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import Dropzone from "react-dropzone";
 import { Formik } from "formik";
 import * as yup from "yup";
+import "../../sell.css";
 
 const Sell = () => {
   const ThingSchema = yup.object().shape({
@@ -123,7 +124,7 @@ const Sell = () => {
       body: formData,
     });
     const savedUser = await savedUserResponse.json();
-    console.log(savedUser);
+    // console.log(savedUser);
     onSubmitProps.resetForm();
   };
 
@@ -147,115 +148,127 @@ const Sell = () => {
         resetForm,
       }) => (
         <form>
-          <Box
-            display="grid"
-            gap="30px"
-            gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-            sx={{
-              "& > div": { gridColumn: undefined },
-            }}
-          >
-            <Dropzone
-              acceptedFiles=".jpg,.jpeg,.png"
-              multiple={false}
-              onDrop={(acceptedFiles) =>
-                setFieldValue("image", acceptedFiles[0])
-              }
-            >
-              {({ getRootProps, getInputProps }) => (
-                <Box
-                  {...getRootProps()}
-                  border={`2px dashed green`}
-                  p="1rem"
-                  sx={{ "&:hover": { cursor: "pointer" } }}
-                >
-                  <input {...getInputProps()} />
-                  {!values.image ? (
-                    <p>Add Picture Here</p>
-                  ) : (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Typography>{values.image.name}</Typography>
-                      <EditOutlinedIcon />
-                    </Box>
-                  )}
-                </Box>
-              )}
-            </Dropzone>
-
-            <TextField
-              label="name"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.name}
-              name="name"
-              error={Boolean(touched.name) && Boolean(errors.name)}
-              helperText={touched.name && errors.name}
-              sx={{ gridColumn: "span 1" }}
-            />
-            <TextField
-              label="price"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.price}
-              name="price"
-              error={Boolean(touched.price) && Boolean(errors.price)}
-              helperText={touched.price && errors.price}
-              sx={{ gridColumn: "span 1" }}
-            />
-            <TextField
-              label="desc"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.desc}
-              name="desc"
-              error={Boolean(touched.desc) && Boolean(errors.desc)}
-              helperText={touched.desc && errors.desc}
-              sx={{ gridColumn: "span 1" }}
-            />
-            <TextField
-              label="Category"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.category}
-              name="category"
-              error={Boolean(touched.category) && Boolean(errors.category)}
-              helperText={touched.category && errors.category}
-              sx={{ gridColumn: "span 1" }}
-            />
-            <TextField
-              label="contact"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.contact}
-              name="contact"
-              error={Boolean(touched.contact) && Boolean(errors.contact)}
-              helperText={touched.contact && errors.contact}
-              sx={{ gridColumn: "span 1" }}
-            />
-          </Box>
-
-          <Box>
-            <Button
-              fullWidth
-              type="submit"
+          <div className="sell-container">
+            <Box
+              display="grid"
+              gap="10px"
+              gridTemplateColumns="auto"
               sx={{
-                m: "2rem 0",
-                p: "1rem",
-                backgroundColor: "green",
-                color: "red",
-                "&:hover": { color: "yellow" },
+                "& > div": { gridColumn: undefined },
               }}
-              onClick={handleSubmit}
             >
-              Register Item
-            </Button>
-          </Box>
+              {" "}
+              <div className="upload-heading">Upload to Sell</div>
+              <Dropzone
+                acceptedFiles=".jpg,.jpeg,.png"
+                multiple={false}
+                onDrop={(acceptedFiles) =>
+                  setFieldValue("image", acceptedFiles[0])
+                }
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <Box
+                    {...getRootProps()}
+                    border={`2px dashed grey`}
+                    p=".5rem"
+                    margin=".4rem 1rem"
+                    sx={{ "&:hover": { cursor: "pointer" } }}
+                  >
+                    <input {...getInputProps()} />
+                    {!values.image ? (
+                      <p>Add Picture Here</p>
+                    ) : (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Typography>{values.image.name}</Typography>
+                        <EditOutlinedIcon />
+                      </Box>
+                    )}
+                  </Box>
+                )}
+              </Dropzone>
+              <TextField
+                label="name"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.name}
+                name="name"
+                error={Boolean(touched.name) && Boolean(errors.name)}
+                helperText={touched.name && errors.name}
+                sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+              />
+              <TextField
+                label="price"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.price}
+                name="price"
+                error={Boolean(touched.price) && Boolean(errors.price)}
+                helperText={touched.price && errors.price}
+                sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+              />
+              <TextField
+                label="desc"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.desc}
+                name="desc"
+                error={Boolean(touched.desc) && Boolean(errors.desc)}
+                helperText={touched.desc && errors.desc}
+                sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+              />
+              <TextField
+                label="Category"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.category}
+                name="category"
+                error={Boolean(touched.category) && Boolean(errors.category)}
+                helperText={touched.category && errors.category}
+                sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+              />
+              <TextField
+                label="contact"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.contact}
+                name="contact"
+                error={Boolean(touched.contact) && Boolean(errors.contact)}
+                helperText={touched.contact && errors.contact}
+                sx={{ gridColumn: "span 1", margin: "0 1rem" }}
+              />
+            </Box>
+
+            <Box>
+              <Button
+                fullWidth
+                type="submit"
+                sx={{
+                  marginTop: "1rem",
+                  marginBottom: "1rem",
+                  marginRight: "1rem",
+                  marginLeft: "1rem",
+                  width: "23rem",
+                  p: "1rem",
+                  backgroundColor: "#4e54c8",
+                  color: "white",
+
+                  "&:hover": {
+                    color: "black",
+                    backgroundColor: "#4e54c8",
+                  },
+                }}
+                onClick={handleSubmit}
+              >
+                Post Item
+              </Button>
+            </Box>
+          </div>
         </form>
       )}
     </Formik>

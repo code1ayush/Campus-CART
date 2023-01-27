@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import "express-async-errors";
 import bodyParser from "body-parser";
+import path from "path";
+import { fileURLToPath } from "url";
 
 //importing middlewares
 import notFoundMiddlware from "./middleware/notFound.js";
@@ -19,6 +21,9 @@ app.use(express.json());
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Set EJS as templating engine
 // app.set("view engine", "ejs");
@@ -54,6 +59,8 @@ app.use(bodyParser.json({ limit: "50mb" }));
 //     }
 //   });
 // });
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/item", thingRouter);

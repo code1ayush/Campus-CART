@@ -18,6 +18,10 @@ const ThingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  category: {
+    type: String,
+    required: true,
+  },
   contact: {
     type: String,
     required: true,

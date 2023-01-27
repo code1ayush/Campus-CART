@@ -4,17 +4,22 @@ import Thing from "../models/Thing.js";
 import path from "path";
 
 const sellThing = async (req, res) => {
-  const { name, price, desc, contact, image } = req.body;
+  const { name, price, desc, contact, category, image } = req.body;
 
-  console.log(image);
-
-  if (!name || !price || !desc || !contact || !image) {
-    throw new BadRequestError("please provide all values");
+  console.log(req.body);
+  if (!name || !price || !desc || !contact || !image || !category) {
+    throw new BadRequestError("please provide all value");
   }
 
-  const thing = new Thing({ image, name, price, desc, contact });
+  const thing = new Thing({ image, name, price, desc, category, contact });
   const savedthing = await thing.save();
   res.status(StatusCodes.CREATED).json(savedthing);
 };
 
-export { sellThing };
+const buyThing = async (req, res) => {
+  let result = Thing.find();
+  const things = await result;
+  res.status(StatusCodes.OK).json({ things });
+};
+
+export { sellThing, buyThing };
