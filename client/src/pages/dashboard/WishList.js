@@ -12,7 +12,7 @@ const WishList = () => {
   return (
     <>
       {wish ? (
-        <div className="main-container">
+        <div className="main-container buy-main">
           {wish.map((items) => {
             return (
               <>

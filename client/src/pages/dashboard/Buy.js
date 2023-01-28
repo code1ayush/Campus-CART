@@ -19,7 +19,7 @@ const Buy = () => {
   const [modalData, setModalData] = useState(null);
   const [showChat, setShowChat] = useState(false);
 
-  const { buyItem, item, handleCart, handleWish } = useAppContext();
+  const { buyItem, item, handleCart, handleWish, alert } = useAppContext();
 
   // const finalItem = Object.values(item);
   // console.log(item);
@@ -47,8 +47,9 @@ const Buy = () => {
 
   return (
     <>
-      <div>
+      <div className="buy-main">
         {/* <button onClick={buyItem}>Click</button> */}
+
         <Stack
           spacing={2}
           direction="row"
@@ -116,6 +117,7 @@ const Buy = () => {
                       <button onClick={closeModal} className="close-modal-btn">
                         <AiOutlineCloseCircle className="internal" />
                       </button>
+                      <div className="alert-alert">{alert}</div>
                       {modalData ? (
                         <div className="modal-container">
                           <div className="modal-item1">

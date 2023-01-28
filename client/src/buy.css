@@ -257,3 +257,16 @@ display: block;
     margin-bottom: -.4rem;
     margin-left: .5rem;
 }
+
+.alert-alert{
+    background-color:#19a061;
+    color: white;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .4rem;
+}
+
+.buy-main{
+    margin-top: -2rem;
+}
