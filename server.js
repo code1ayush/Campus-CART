@@ -15,6 +15,7 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 //routes
 import authRouter from "./Routes/authRoutes.js";
 import thingRouter from "./Routes/itemRoutes.js";
+import stripeRouter from "./Routes/stripeRoutes.js";
 
 //inbuile middleware
 app.use(express.json());
@@ -64,6 +65,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/item", thingRouter);
+app.use("/api/v1/stripe", stripeRouter);
 
 app.use(notFoundMiddlware);
 app.use(errorHandlerMiddleware);

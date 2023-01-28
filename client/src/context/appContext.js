@@ -125,6 +125,40 @@ const AppProvider = ({ children }) => {
   const handleWish = (hello) => {
     setWish(wish.concat(hello));
   };
+
+  // var arr = [];
+
+  // for (var i = 0; i < cart.length; i++) {
+  //   const { name, price } = cart[i];
+  //   arr.push({
+  //     name: name,
+  //     price: price,
+  //   });
+  // }
+  // console.log(arr);
+
+  // const func = () => {
+  //   fetch("/api/v1/stripe/create-checkout-session", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       items: arr,
+  //     }),
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) return res.json();
+  //       return res.json().then((json) => Promise.reject(json));
+  //     })
+  //     .then(({ url }) => {
+  //       window.location = url;
+  //     })
+  //     .catch((e) => {
+  //       console.error(e.error);
+  //     });
+  // };
+
   return (
     <AppContext.Provider
       value={{
@@ -143,6 +177,7 @@ const AppProvider = ({ children }) => {
         handleWish,
         wish,
         setWish,
+        //func,
         // delCart,
       }}
     >
