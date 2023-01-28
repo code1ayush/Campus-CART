@@ -21,15 +21,8 @@ const Register = () => {
   const [rightPanel, setRightPanel] = useState(false);
   const [values, setValues] = useState(initialState);
 
-  const {
-    user,
-    registerUser,
-    loginUser,
-    displayAlert,
-    showAlert,
-    registerDisplaySuccess,
-    loginDisplaySuccess,
-  } = useAppContext();
+  const { user, registerUser, loginUser, displayAlert, showAlert } =
+    useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -47,10 +40,8 @@ const Register = () => {
     const currentUser = { name, email, password };
     if (rightPanel) {
       registerUser(currentUser);
-      registerDisplaySuccess();
     } else {
       loginUser(currentUser);
-      loginDisplaySuccess();
     }
   };
 

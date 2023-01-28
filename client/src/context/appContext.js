@@ -12,8 +12,6 @@ import {
   DISPLAY_ALERT,
   SELL_ITEM_SUCCESS,
   SELL_ITEM_ERROR,
-  REGISTER_DISPLAY_SUCCESS,
-  LOGIN_DISPLAY_SUCCESS,
 } from "./action";
 
 const user = localStorage.getItem("user");
@@ -37,12 +35,6 @@ const AppProvider = ({ children }) => {
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
-  };
-  const registerDisplaySuccess = () => {
-    dispatch({ type: REGISTER_DISPLAY_SUCCESS });
-  };
-  const loginDisplaySuccess = () => {
-    dispatch({ type: LOGIN_DISPLAY_SUCCESS });
   };
 
   const toggleSidebar = () => {
@@ -152,8 +144,6 @@ const AppProvider = ({ children }) => {
         wish,
         setWish,
         // delCart,
-        registerDisplaySuccess,
-        loginDisplaySuccess,
       }}
     >
       {children}
