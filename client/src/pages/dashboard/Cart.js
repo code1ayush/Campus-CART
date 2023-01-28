@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
 import { AiOutlineDelete } from "react-icons/ai";
 const Cart = () => {
-  const { cart, setCart } = useAppContext();
+  const { cart, setCart, func } = useAppContext();
 
   // useEffect(() => {
   //   console.log(cart);
@@ -48,6 +48,7 @@ const Cart = () => {
                     <p>{items.contact}</p>
                   </div>
                 </div>
+                <button onClick={() => func()}>click</button>
               </>
             );
           })}

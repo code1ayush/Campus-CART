@@ -129,38 +129,38 @@ const AppProvider = ({ children }) => {
     setAlert("Item Added to the WishList");
   };
 
-  // var arr = [];
+  var arr = [];
 
-  // for (var i = 0; i < cart.length; i++) {
-  //   const { name, price } = cart[i];
-  //   arr.push({
-  //     name: name,
-  //     price: price,
-  //   });
-  // }
-  // console.log(arr);
+  for (var i = 0; i < cart.length; i++) {
+    const { name, price } = cart[i];
+    arr.push({
+      name: name,
+      price: price,
+    });
+  }
+  console.log(arr);
 
-  // const func = () => {
-  //   fetch("/api/v1/stripe/create-checkout-session", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       items: arr,
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) return res.json();
-  //       return res.json().then((json) => Promise.reject(json));
-  //     })
-  //     .then(({ url }) => {
-  //       window.location = url;
-  //     })
-  //     .catch((e) => {
-  //       console.error(e.error);
-  //     });
-  // };
+  const func = () => {
+    fetch("/api/v1/stripe/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: arr,
+      }),
+    })
+      .then(async (res) => {
+        if (res.ok) return await res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
+  };
   useEffect(() => {
     const timer = setTimeout(() => setAlert(""), 2000);
     return () => clearTimeout(timer);
@@ -184,7 +184,7 @@ const AppProvider = ({ children }) => {
         handleWish,
         wish,
         setWish,
-        //func,
+        func,
         alert,
         // delCart,
       }}
