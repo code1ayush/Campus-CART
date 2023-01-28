@@ -16,7 +16,7 @@ const Cart = () => {
   return (
     <>
       {cart ? (
-        <div className="main-container">
+        <div className="main-container buy-main">
           {cart.map((items) => {
             return (
               <>

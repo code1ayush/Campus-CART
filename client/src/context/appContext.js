@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useState } from "react";
+import React, { useReducer, useContext, useState, useEffect } from "react";
 import reducer from "./reducer.js";
 import axios from "axios";
 import { TOGGLE_SIDEBAR } from "./action.js";
@@ -32,6 +32,7 @@ const AppProvider = ({ children }) => {
   const [item, setItem] = useState("");
   const [cart, setCart] = useState([]);
   const [wish, setWish] = useState([]);
+  const [alert, setAlert] = useState("");
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -116,6 +117,7 @@ const AppProvider = ({ children }) => {
 
   const handleCart = (hello) => {
     setCart(cart.concat(hello));
+    setAlert("Item Added to the Cart");
   };
 
   // const delCart = () => {
@@ -124,6 +126,7 @@ const AppProvider = ({ children }) => {
 
   const handleWish = (hello) => {
     setWish(wish.concat(hello));
+    setAlert("Item Added to the WishList");
   };
 
   // var arr = [];
@@ -158,6 +161,10 @@ const AppProvider = ({ children }) => {
   //       console.error(e.error);
   //     });
   // };
+  useEffect(() => {
+    const timer = setTimeout(() => setAlert(""), 2000);
+    return () => clearTimeout(timer);
+  }, [cart, wish]);
 
   return (
     <AppContext.Provider
@@ -178,6 +185,7 @@ const AppProvider = ({ children }) => {
         wish,
         setWish,
         //func,
+        alert,
         // delCart,
       }}
     >
