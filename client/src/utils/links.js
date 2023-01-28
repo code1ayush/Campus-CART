@@ -28,6 +28,12 @@ const links = [
     path: "WishList",
     icon: <AiOutlineHeart />,
   },
+  {
+    id: 5,
+    text: "Contact",
+    path: "contact",
+    icon: <AiOutlineHeart />,
+  },
 ];
 
 export default links;
