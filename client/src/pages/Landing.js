@@ -1,7 +1,7 @@
 import React from "react";
 import "../landing.css";
 import { Link } from "react-router-dom";
-import landing from "../assets/landing.svg";
+import landing2 from "../assets/landing2.svg";
 import logo from "../assets/logo.svg";
 const Landing = () => {
   return (
@@ -20,7 +20,7 @@ const Landing = () => {
             </button>
           </div>
           <div className="grid-item2">
-            <img src={landing} alt="" className="landing-image" />
+            <img src={landing2} alt="" className="landing-image" />
           </div>
         </div>
         <svg

@@ -1,7 +1,8 @@
 import { BsFillCartPlusFill } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import { MdSell } from "react-icons/md";
 import { ImBooks } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
 
 const links = [
   {
@@ -26,13 +27,13 @@ const links = [
     id: 4,
     text: "WishList",
     path: "WishList",
-    icon: <AiOutlineHeart />,
+    icon: <AiFillHeart />,
   },
   {
     id: 5,
     text: "Contact",
     path: "contact",
-    icon: <AiOutlineHeart />,
+    icon: <CgProfile />,
   },
 ];
 

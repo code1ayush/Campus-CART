@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
 import { AiOutlineDelete } from "react-icons/ai";
+import logo from "../../assets/landing.svg";
+import { Link } from "react-router-dom";
 
 const WishList = () => {
   const { wish, setWish } = useAppContext();
@@ -11,7 +13,7 @@ const WishList = () => {
   };
   return (
     <>
-      {wish ? (
+      {wish.length ? (
         <div className="main-container buy-main">
           {wish.map((items) => {
             return (
@@ -37,7 +39,7 @@ const WishList = () => {
                       <AiOutlineDelete />
                     </button>
                   </div>
-                  <p className="item-price">{items.price}</p>
+                  <p className="item-price">₹ {items.price}</p>
                   <div className="last-div">
                     <p>{items.desc}</p>
                     <p>{items.category}</p>
@@ -49,7 +51,20 @@ const WishList = () => {
           })}
         </div>
       ) : (
-        <div>Cart is Empty dj</div>
+        <div className="align-cart">
+          <img src={logo} alt="" className="empty-cart" />
+          <div>
+            <h5>OOps! No Items in the WishList!!</h5>
+          </div>
+          <div style={{ marginTop: "-2rem" }}>
+            <p>
+              Go back{" "}
+              <Link to="/" style={{ textDecoration: "underline" }}>
+                Buy
+              </Link>
+            </p>
+          </div>
+        </div>
       )}
     </>
   );
