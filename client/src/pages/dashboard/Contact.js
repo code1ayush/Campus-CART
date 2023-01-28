@@ -1,8 +1,16 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
 export default function MultilineTextFields() {
+  const handle = () => {
+    console.log("hello");
+  };
+
+  useEffect(() => {
+    handle();
+  }, []);
   return (
     <Box
       sx={{
@@ -12,15 +20,17 @@ export default function MultilineTextFields() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        marginX: "21rem",
         borderRadius: "0.5rem",
+        width: "22rem",
+        margin: "auto",
+        marginTop: "-1.5rem",
       }}
     >
       <Box sx={{ fontSize: "2rem" }}>Contact Us</Box>
       <Box
         component="form"
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "40ch" },
+          "& .MuiTextField-root": { m: 1, width: "20rem" },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -48,6 +58,13 @@ export default function MultilineTextFields() {
             rows={8}
             defaultValue=""
           />
+          <Button
+            variant="contained"
+            sx={{ width: "20rem", margin: "auto", marginTop: ".5rem" }}
+            onClick={handle}
+          >
+            Sumit
+          </Button>
         </div>
       </Box>
     </Box>
