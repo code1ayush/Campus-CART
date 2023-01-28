@@ -6,6 +6,7 @@ import {
   Cart,
   WishList,
   SharedLayout,
+  Contact,
 } from "./pages/dashboard/index.js";
 import "./App.css";
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="sell" element={<Sell />} />
             <Route path="cart" element={<Cart />} />
             <Route path="wishList" element={<WishList />} />
+            <Route path="contact" element={<Contact />} />
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/landing" element={<Landing />} />
