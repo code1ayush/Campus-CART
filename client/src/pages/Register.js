@@ -8,6 +8,7 @@ import { useAppContext } from "../context/appContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Alert } from "../components/index.js";
 
 const initialState = {
   name: "",
@@ -20,7 +21,15 @@ const Register = () => {
   const [rightPanel, setRightPanel] = useState(false);
   const [values, setValues] = useState(initialState);
 
-  const { user, registerUser, loginUser, displayAlert } = useAppContext();
+  const {
+    user,
+    registerUser,
+    loginUser,
+    displayAlert,
+    showAlert,
+    registerDisplaySuccess,
+    loginDisplaySuccess,
+  } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -32,14 +41,16 @@ const Register = () => {
     //console.log(values);
 
     if (!email || !password || (rightPanel && !name)) {
-      console.log("wrong answer");
+      displayAlert();
     }
 
     const currentUser = { name, email, password };
     if (rightPanel) {
       registerUser(currentUser);
+      registerDisplaySuccess();
     } else {
       loginUser(currentUser);
+      loginDisplaySuccess();
     }
   };
 
@@ -60,6 +71,13 @@ const Register = () => {
           <div className="form-container sign-up-container">
             <form>
               {/* <form action="/startup/create-session" method="POST"> */}
+              {showAlert ? (
+                <div>
+                  <Alert />
+                </div>
+              ) : (
+                []
+              )}
               <h1>Register</h1>
               <div className="social-container">
                 <a href="#" className="social">
@@ -105,6 +123,13 @@ const Register = () => {
           </div>
           <div className="form-container sign-in-container">
             <form>
+              {showAlert ? (
+                <div>
+                  <Alert />
+                </div>
+              ) : (
+                []
+              )}
               <h1>Sign In</h1>
               <div className="social-container">
                 <a href="#" className="social">

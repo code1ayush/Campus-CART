@@ -8,6 +8,8 @@ import {
   DISPLAY_ALERT,
   SELL_ITEM_SUCCESS,
   SELL_ITEM_ERROR,
+  REGISTER_DISPLAY_SUCCESS,
+  LOGIN_DISPLAY_SUCCESS,
 } from "./action";
 
 import { initialState } from "./appContext";
@@ -24,6 +26,11 @@ const reducer = (state, action) => {
       ...state,
       user: action.payload.user,
       token: action.payload.token,
+    };
+  }
+  if (action.type === REGISTER_USER_ERROR) {
+    return {
+      ...state,
     };
   }
   if (action.type === LOGIN_USER_SUCCESS) {
@@ -54,6 +61,25 @@ const reducer = (state, action) => {
       alertText: "please provide all values",
     };
   }
+
+  if (action.type === REGISTER_DISPLAY_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "success",
+      alertText: " Register Successfull! Please Wait ",
+    };
+  }
+
+  if (action.type === LOGIN_DISPLAY_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "success",
+      alertText: " Login Successfull! Please Wait ",
+    };
+  }
+
   if (action.type === SELL_ITEM_SUCCESS) {
     return {
       ...state,
