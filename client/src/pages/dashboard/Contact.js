@@ -63,7 +63,7 @@ export default function MultilineTextFields() {
             sx={{ width: "20rem", margin: "auto", marginTop: ".5rem" }}
             onClick={handle}
           >
-            Sumit
+            Submit
           </Button>
         </div>
       </Box>
